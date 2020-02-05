@@ -239,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 147662289}
+  camera: {fileID: 1357427273}
 --- !u!1 &1357427271
 GameObject:
   m_ObjectHideFlags: 0
