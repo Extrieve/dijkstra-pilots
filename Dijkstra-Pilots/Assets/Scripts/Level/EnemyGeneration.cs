@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject enemyPrefab;
 
-    // Update is called once per frame
-    void Update()
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
+    public void GenerateNewEnemies()
     {
-        
+        //Called from LevelGeneration to create new enemies once the level is created
+
+        Debug.Log("Enemy gen complete");
     }
 }

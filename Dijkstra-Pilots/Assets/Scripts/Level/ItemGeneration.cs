@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ItemGeneration : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<GameObject> itemPrefabs = new List<GameObject>();
 
-    // Update is called once per frame
-    void Update()
+    private List<GameObject> activeItems = new List<GameObject>();
+
+    public void GenerateNewItems()
     {
-        
+        //called from LevelGeneration to create new items once the level is created
+
+        Debug.Log("Item gen complete");
     }
 }
