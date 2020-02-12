@@ -8,13 +8,18 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    public List<GameObject> normalTileSets = new List<GameObject>();
-
     //tile sets that have openings
     public List<GameObject> orTileSets = new List<GameObject>();
     public List<GameObject> olTileSets = new List<GameObject>();
     public List<GameObject> otTileSets = new List<GameObject>();
     public List<GameObject> obTileSets = new List<GameObject>();
+    public List<GameObject> otbTileSets = new List<GameObject>();
+    public List<GameObject> olrTileSets = new List<GameObject>();
+    public List<GameObject> otlTileSets = new List<GameObject>();
+    public List<GameObject> otrTileSets = new List<GameObject>();
+    public List<GameObject> oblTileSets = new List<GameObject>();
+    public List<GameObject> obrTileSets = new List<GameObject>();
+    public List<GameObject> oallTileSets = new List<GameObject>();
 
     public List<GameObject> bossTileSets = new List<GameObject>();
 
