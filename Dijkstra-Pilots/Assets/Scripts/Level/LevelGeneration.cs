@@ -9,19 +9,9 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     //tile sets that have openings
-    public List<GameObject> orTileSets = new List<GameObject>();
-    public List<GameObject> olTileSets = new List<GameObject>();
-    public List<GameObject> otTileSets = new List<GameObject>();
-    public List<GameObject> obTileSets = new List<GameObject>();
-    public List<GameObject> otbTileSets = new List<GameObject>();
-    public List<GameObject> olrTileSets = new List<GameObject>();
-    public List<GameObject> otlTileSets = new List<GameObject>();
-    public List<GameObject> otrTileSets = new List<GameObject>();
-    public List<GameObject> oblTileSets = new List<GameObject>();
-    public List<GameObject> obrTileSets = new List<GameObject>();
-    public List<GameObject> oallTileSets = new List<GameObject>();
+    public List<GameObject> tileSets = new List<GameObject>();
 
-    public List<GameObject> bossTileSets = new List<GameObject>();
+    public GameObject hallConnector;
 
     private List<GameObject> activeTileSets = new List<GameObject>();
 
@@ -41,14 +31,14 @@ public class LevelGeneration : MonoBehaviour
         iGen = GetComponent<ItemGeneration>();
         eGen = GetComponent<EnemyGeneration>();
 
-        GenerateNewTiles();
+        //GenerateNewTiles();
 
         totalAvailableTiles = activeTileSets.Count;
         
         //Should not be called here. Call should be made from the game manager on level start
-        GenerateLevel();
-        iGen.GenerateNewItems();
-        eGen.GenerateNewEnemies();
+        //GenerateLevel();
+        //iGen.GenerateNewItems();
+        //eGen.GenerateNewEnemies();
     }
 
     public void GenerateLevel() //called from game manager to create level at game start
@@ -82,39 +72,11 @@ public class LevelGeneration : MonoBehaviour
     {
         int randomIndex;
 
-        for (int i = 0; i < orTileSets.Count; i++)
+        for (int i = 0; i < tileSets.Count; i++)
         {
-            randomIndex = Random.Range(0, orTileSets.Count);
+            randomIndex = Random.Range(0, tileSets.Count);
 
-            activeTileSets.Add(Instantiate(orTileSets[randomIndex] as GameObject, envObjectsParent.transform));
-        }
-
-        for (int i = 0; i < olTileSets.Count; i++)
-        {
-            randomIndex = Random.Range(0, olTileSets.Count);
-
-            activeTileSets.Add(Instantiate(olTileSets[randomIndex] as GameObject, envObjectsParent.transform));
-        }
-
-        for (int i = 0; i < otTileSets.Count; i++)
-        {
-            randomIndex = Random.Range(0, otTileSets.Count);
-
-            activeTileSets.Add(Instantiate(otTileSets[randomIndex] as GameObject, envObjectsParent.transform));
-        }
-
-        for (int i = 0; i < obTileSets.Count; i++)
-        {
-            randomIndex = Random.Range(0, obTileSets.Count);
-
-            activeTileSets.Add(Instantiate(obTileSets[randomIndex] as GameObject, envObjectsParent.transform));
-        }
-
-        for (int i = 0; i < bossTileSets.Count; i++)
-        {
-            randomIndex = Random.Range(0, bossTileSets.Count);
-
-            activeTileSets.Add(Instantiate(bossTileSets[randomIndex] as GameObject, envObjectsParent.transform));
+            activeTileSets.Add(Instantiate(tileSets[randomIndex] as GameObject, envObjectsParent.transform));
         }
     }
 }
