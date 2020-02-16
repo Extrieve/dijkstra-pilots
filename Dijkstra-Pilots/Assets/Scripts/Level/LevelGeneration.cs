@@ -17,7 +17,7 @@ public class LevelGeneration : MonoBehaviour
 
     private bool bossLevel = false;
     private int currentLevel = 0;
-    private int levelTileCount = 2;
+    private int levelTileCount = 10;
     private int tbTileDistance = 15;
     private int lrTileDistance = 23;
     public int tileIncreasePerLevel;
@@ -53,11 +53,10 @@ public class LevelGeneration : MonoBehaviour
         if(!bossLevel)
         {
             //generate a new level that does not have a boss room
-            int tileCount = currentLevel + tileIncreasePerLevel;
             GameObject previousTile = null;
             float previousXPos = 0, previousYPos = 0;
 
-            for (int i = 0; i < tileCount; i++)
+            for (int i = 0; i < levelTileCount; i++)
             {
                 float xPos = 0, yPos = 0;
                 int randomTile = 0;
@@ -79,109 +78,309 @@ public class LevelGeneration : MonoBehaviour
                 }
                 else
                 {
-                    if(previousTile.name.Contains("Tile_T_"))
+                    if (previousTile.name.Contains("Tile_T_")) //if the previous tile was a top connector
                     {
                         xPos = previousXPos;
                         yPos = previousYPos + tbTileDistance;
                         currentTile.transform.position = new Vector3(xPos, yPos);
                     }
-                    else if (previousTile.name.Contains("Tile_L_"))
+                    else if (previousTile.name.Contains("Tile_L_")) //if the previous tile was a left connector
                     {
                         xPos = previousXPos - lrTileDistance;
                         yPos = previousYPos;
                         currentTile.transform.position = new Vector3(xPos, yPos);
                     }
-                    else if (previousTile.name.Contains("Tile_R_"))
+                    else if (previousTile.name.Contains("Tile_R_")) //if the previous tile was a right connector
                     {
                         xPos = previousXPos + lrTileDistance;
                         yPos = previousYPos;
                         currentTile.transform.position = new Vector3(xPos, yPos);
                     }
-                    else if (previousTile.name.Contains("Tile_B_"))
+                    else if (previousTile.name.Contains("Tile_B_")) //if the previous tile was a bottom connector
                     {
                         xPos = previousXPos;
                         yPos = previousYPos - tbTileDistance;
                         currentTile.transform.position = new Vector3(xPos, yPos);
                     }
-                    else if (previousTile.name.Contains("Tile_TB_"))
+                    else if (previousTile.name.Contains("Tile_TB_")) //if the previous tile was a top bottom connector
                     {
-                        int upOrDown = Random.Range(0, 2);
-
-                        if(upOrDown == 0)
-                            yPos = previousYPos + tbTileDistance;
-                        else
+                        if (currentTile.name.Contains("Tile_T_"))
+                        {
+                            xPos = previousXPos;
                             yPos = previousYPos - tbTileDistance;
+                        }
+                        else if (currentTile.name.Contains("Tile_B_"))
+                        {
+                            xPos = previousXPos;
+                            yPos = previousYPos + tbTileDistance;
+                        }
+                        else if (currentTile.name.Contains("Tile_TB_") || currentTile.name.Contains("Tile_TRB_") || currentTile.name.Contains("Tile_TLB_") || currentTile.name.Contains("Tile_A_"))
+                        {
+                            int randomPos = Random.Range(0, 2);
+                            if (randomPos == 1)
+                                yPos = previousYPos - tbTileDistance;
+                            else
+                                yPos = previousYPos + tbTileDistance;
+                        }
 
                         xPos = previousXPos;
                         currentTile.transform.position = new Vector3(xPos, yPos);
                     }
-                    else if (previousTile.name.Contains("Tile_TLB_"))
+                    else if (previousTile.name.Contains("Tile_TLB_")) //if the previous tile was a top left bottom connector
                     {
-                        int upLeftorDown = Random.Range(0, 3);
-
-                        if (upLeftorDown == 0)
-                        {
-                            xPos = previousXPos;
-                            yPos = previousYPos + tbTileDistance;
-                        }
-                        else if (upLeftorDown == 1)
+                        if (currentTile.name.Contains("Tile_R_"))
                         {
                             xPos = previousXPos - lrTileDistance;
                             yPos = previousYPos;
                         }
-                        else if (upLeftorDown == 2)
+                        else if (currentTile.name.Contains("Tile_T_"))
                         {
                             xPos = previousXPos;
                             yPos = previousYPos - tbTileDistance;
                         }
-
-                        currentTile.transform.position = new Vector3(xPos, yPos);
-                    }
-                    else if (previousTile.name.Contains("Tile_TRB_"))
-                    {
-                        int upRightorDown = Random.Range(0, 3);
-
-                        if (upRightorDown == 0)
+                        else if (currentTile.name.Contains("Tile_B_"))
                         {
                             xPos = previousXPos;
                             yPos = previousYPos + tbTileDistance;
                         }
-                        else if (upRightorDown == 1)
+                        else if (currentTile.name.Contains("Tile_TB_"))
                         {
-                            xPos = previousXPos + lrTileDistance;
-                            yPos = previousYPos;
+                            int randomPos = Random.Range(0, 2);
+                            if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
                         }
-                        else if (upRightorDown == 2)
+                        else if (currentTile.name.Contains("Tile_TRB_"))
                         {
-                            xPos = previousXPos;
-                            yPos = previousYPos - tbTileDistance;
+                            int randomPos = Random.Range(0, 3);
+                            if (randomPos == 0)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                            else if (randomPos == 2)
+                            {
+                                xPos = previousXPos - lrTileDistance;
+                                yPos = previousYPos;
+                            }
+                        }
+                        else if (currentTile.name.Contains("Tile_TLB_"))
+                        {
+                            int randomPos = Random.Range(0, 2);
+                            if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                        }
+                        else if (currentTile.name.Contains("Tile_A_"))
+                        {
+                            int randomPos = Random.Range(0, 4);
+                            if (randomPos == 0)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                            else if (randomPos == 2)
+                            {
+                                xPos = previousXPos + lrTileDistance;
+                                yPos = previousYPos;
+                            }
+                            else if (randomPos == 3)
+                            {
+                                xPos = previousXPos - lrTileDistance;
+                                yPos = previousYPos;
+                            }
                         }
 
                         currentTile.transform.position = new Vector3(xPos, yPos);
                     }
-                    else if (previousTile.name.Contains("Tile_A_"))
+                    else if (previousTile.name.Contains("Tile_TRB_")) //if the previous tile was a top right bottom connector
                     {
-                        int upRightLeftorDown = Random.Range(0, 4);
-
-                        if (upRightLeftorDown == 0)
+                        if(currentTile.name.Contains("Tile_L_"))
+                        {
+                              xPos = previousXPos + lrTileDistance;
+                              yPos = previousYPos;
+                        }
+                        else if (currentTile.name.Contains("Tile_T_"))
+                        {
+                              xPos = previousXPos;
+                              yPos = previousYPos - tbTileDistance;
+                        }
+                        else if (currentTile.name.Contains("Tile_B_"))
                         {
                             xPos = previousXPos;
                             yPos = previousYPos + tbTileDistance;
                         }
-                        else if (upRightLeftorDown == 1)
+                        else if (currentTile.name.Contains("Tile_TB_"))
                         {
-                            xPos = previousXPos + lrTileDistance;
-                            yPos = previousYPos;
+                            int randomPos = Random.Range(0, 2);
+                            if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
                         }
-                        else if (upRightLeftorDown == 2)
+                        else if (currentTile.name.Contains("Tile_TRB_"))
+                        {
+                            int randomPos = Random.Range(0, 2);
+                            if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                        }
+                        else if (currentTile.name.Contains("Tile_TLB_"))
+                        {
+                            int randomPos = Random.Range(0, 3);
+                            if (randomPos == 0)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                            else if (randomPos == 2)
+                            {
+                                xPos = previousXPos + lrTileDistance;
+                                yPos = previousYPos;
+                            }
+                        }
+                        else if (currentTile.name.Contains("Tile_A_"))
+                        {
+                            int randomPos = Random.Range(0, 4);
+                            if (randomPos == 0)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                            else if (randomPos == 2)
+                            {
+                                xPos = previousXPos + lrTileDistance;
+                                yPos = previousYPos;
+                            }
+                            else if (randomPos == 3)
+                            {
+                                xPos = previousXPos - lrTileDistance;
+                                yPos = previousYPos;
+                            }
+                        }
+
+                        currentTile.transform.position = new Vector3(xPos, yPos);
+                    }
+                    else if (previousTile.name.Contains("Tile_A_")) //if the previous tile was an all connector
+                    {
+                        if (currentTile.name.Contains("Tile_R_"))
                         {
                             xPos = previousXPos - lrTileDistance;
                             yPos = previousYPos;
                         }
-                        else if (upRightLeftorDown == 3)
+                        else if (currentTile.name.Contains("Tile_T_"))
                         {
                             xPos = previousXPos;
                             yPos = previousYPos - tbTileDistance;
+                        }
+                        else if (currentTile.name.Contains("Tile_B_"))
+                        {
+                            xPos = previousXPos;
+                            yPos = previousYPos + tbTileDistance;
+                        }
+                        else if (currentTile.name.Contains("Tile_L_"))
+                        {
+                            xPos = previousXPos + lrTileDistance;
+                            yPos = previousYPos;
+                        }
+                        else if(currentTile.name.Contains("Tile_TB_"))
+                        {
+                            int randomPos = Random.Range(0, 2);
+                            if(randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                        }
+                        else if (currentTile.name.Contains("Tile_TLB_"))
+                        {
+                            int randomPos = Random.Range(0, 3);
+                            if(randomPos == 0)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                            else if (randomPos == 2)
+                            {
+                                xPos = previousXPos + lrTileDistance;
+                                yPos = previousYPos;
+                            }
+                        }
+                        else if (currentTile.name.Contains("Tile_TRB_"))
+                        {
+                            int randomPos = Random.Range(0, 3);
+                            if (randomPos == 0)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos - tbTileDistance;
+                            }
+                            else if (randomPos == 1)
+                            {
+                                xPos = previousXPos;
+                                yPos = previousYPos + tbTileDistance;
+                            }
+                            else if (randomPos == 2)
+                            {
+                                xPos = previousXPos - lrTileDistance;
+                                yPos = previousYPos;
+                            }
                         }
 
                         currentTile.transform.position = new Vector3(xPos, yPos);
@@ -199,166 +398,111 @@ public class LevelGeneration : MonoBehaviour
         }
 
         currentLevel++;
+        levelTileCount += tileIncreasePerLevel;
 
         Debug.Log("Level gen complete");
     }
 
     public void GenerateNewTiles()
     {
+        //clear the current tiles in prep for the next level's tiles
         activeTileSets.Clear();
 
+        //choose a random index for the first tile
         int randomIndex;
-
-        //based on the current level that the tiles are being generated for, pick a set of tiles that will be able to connect
         randomIndex = Random.Range(0, tileSets.Count);
+
+        //create a var to hold the first tile
         GameObject newTile;
 
+        //create and add the new tile to the active tiles list
         activeTileSets.Add(newTile = Instantiate(tileSets[randomIndex] as GameObject, envObjectsParent.transform));
         newTile.SetActive(false);
 
+        //get the name of the first tile
         string newTileName = newTile.name;
 
-        for (int i = 0; i < levelTileCount; i++)
+        //create vars that will be used in the loop below
+        GameObject createdTile = null;
+        GameObject connectingTile = null;
+        int randomTile;
+
+        //for however many tiles are needed for the current level, find a tile that connects to the previous tile
+        //the first run will look for a tile that connects to the first tile created above
+        for (int i = 1; i < levelTileCount; i++)
         {
             if (newTileName.Contains("Tile_T_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_B"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_B_"));
             }
             else if (newTileName.Contains("Tile_L_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_R"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_R_"));
             }
             else if (newTileName.Contains("Tile_R_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_L"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_L_"));
             }
             else if (newTileName.Contains("Tile_B_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_T"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_T_"));
             }
             else if (newTileName.Contains("Tile_TB_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_B") && !connectingTile.name.Contains("Tile_T"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_B_") && !connectingTile.name.Contains("Tile_T_"));
             }
             else if (newTileName.Contains("Tile_TLB_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_B") && !connectingTile.name.Contains("Tile_T") && !connectingTile.name.Contains("Tile_R"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_B_") && !connectingTile.name.Contains("Tile_T_") && !connectingTile.name.Contains("Tile_R_"));
             }
             else if (newTileName.Contains("Tile_TRB_"))
             {
-                GameObject connectingTile;
-                int randomTile;
                 do
                 {
                     randomTile = Random.Range(0, tileSets.Count);
                     connectingTile = tileSets[randomTile];
                 }
-                while (!connectingTile.name.Contains("Tile_B") && !connectingTile.name.Contains("Tile_T") && !connectingTile.name.Contains("Tile_L"));
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                while (!connectingTile.name.Contains("Tile_B_") && !connectingTile.name.Contains("Tile_T_") && !connectingTile.name.Contains("Tile_L_"));
             }
             else if (newTileName.Contains("Tile_A_"))
             {
-
-                int randomTile = Random.Range(0, tileSets.Count);
-                GameObject connectingTile = tileSets[randomTile];
-
-                GameObject createdTile;
-
-                activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
-                createdTile.SetActive(false);
-
-                newTileName = createdTile.name;
+                randomTile = Random.Range(0, tileSets.Count);
+                connectingTile = tileSets[randomTile];
             }
+
+            activeTileSets.Add(Instantiate(createdTile = connectingTile as GameObject, envObjectsParent.transform));
+            createdTile.SetActive(false);
+            newTileName = createdTile.name;
         }
     }
 }
