@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    ReferenceManager refMgr;
+    LevelGeneration levelGen;
+
+    private void Awake()
     {
-        
+        refMgr = GetComponent<ReferenceManager>();
+        levelGen = GetComponent<LevelGeneration>();
+        refMgr.SendReferences();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        levelGen.CreateNewLevel();
     }
 }

@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReferenceHandler : MonoBehaviour
+public static class ReferenceHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public static List<GameObject> referenceObjects = new List<GameObject>();
+
+    public static void SetReferences(List<GameObject> objects)
     {
-        
+        referenceObjects = objects;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static GameObject GetObject(int ID)
     {
-        
+        if (referenceObjects.Count - 1 < ID)
+        {
+            Debug.LogError("The ID provided is longer than the object list");
+
+            return null;
+        }
+        else
+        {
+            return referenceObjects[ID];
+        }
     }
 }
