@@ -549,6 +549,12 @@ PrefabInstance:
       propertyPath: referenceObjects.Array.data[3]
       value: 
       objectReference: {fileID: 973522394}
+    - target: {fileID: 2006089294307423721, guid: 507f0e1e7cee0dc418eb65164fb7c745,
+        type: 3}
+      propertyPath: levelCompleteTrigger
+      value: 
+      objectReference: {fileID: 2440613395440030249, guid: 055734eaa45373e468db0c68269a1384,
+        type: 3}
     - target: {fileID: 2006089294307423722, guid: 507f0e1e7cee0dc418eb65164fb7c745,
         type: 3}
       propertyPath: m_LocalPosition.x
