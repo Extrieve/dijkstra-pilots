@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Enemy : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    
     public float moveSpeed;
     //This is how far the enemy stops from the player
     public float stoppingDistance;
