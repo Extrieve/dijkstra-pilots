@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyObject : MonoBehaviour
+public class EnemyObject : BaseAI
 {
-    // Start is called before the first frame update
-    void Start()
+    private Enemy enemy;
+
+    private void Awake()
     {
-        
+        enemy = GetComponent<Enemy>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        //over time, move the enemy to a new location
+
+        //if the player is in sight, attack them
     }
 }
