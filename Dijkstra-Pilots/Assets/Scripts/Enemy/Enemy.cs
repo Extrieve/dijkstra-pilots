@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("PlayerCharacter").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBtwShots = startTimeBtwShots;
 
         waitTime = startWaitTime;

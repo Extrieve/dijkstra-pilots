@@ -25,16 +25,24 @@ public class Enemy : MonoBehaviour
     public Transform player;
 
     //The array to contain the waypoints that the enemy needs to move to
-    public Transform[] moveSpots;
+    private List<Transform> moveSpots = new List<Transform>();
     private int randomSpot;
+
+    private void Awake()
+    {
+        foreach(GameObject movePoint in GameObject.FindGameObjectsWithTag("MovePoint"))
+        {
+            moveSpots.Add(movePoint.transform);
+        }
+    }
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("PlayerCharacter").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBtwShots = startTimeBtwShots;
 
         waitTime = startWaitTime;
-        randomSpot = Random.Range(0, moveSpots.Length);
+        randomSpot = Random.Range(0, moveSpots.Count);
     }
 
     void Update()
@@ -78,7 +86,7 @@ public class Enemy : MonoBehaviour
             {
                 if (waitTime <= 0)
                 {
-                    randomSpot = Random.Range(0, moveSpots.Length);
+                    randomSpot = Random.Range(0, moveSpots.Count);
                     waitTime = startWaitTime;
                 }
             }

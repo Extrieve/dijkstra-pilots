@@ -11,7 +11,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("PlayerCharacter").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         target = new Vector2(player.position.x, player.position.y);
     }
@@ -28,7 +28,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerCharacter"))
+        if (other.CompareTag("Player"))
         {
             DestroyProjectile();
         }

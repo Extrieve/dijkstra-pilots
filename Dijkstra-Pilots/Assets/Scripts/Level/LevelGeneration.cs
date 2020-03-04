@@ -9,6 +9,7 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour {
     public List<GameObject> tileSets = new List<GameObject> ();
     public List<GameObject> items = new List<GameObject> ();
+    public GameObject basicEnemy;
 
     public GameObject hallConnector;
 
@@ -24,19 +25,16 @@ public class LevelGeneration : MonoBehaviour {
 
     private GameObject envObjectsParent;
 
-    private EnemyGeneration eGen;
-
     public GameObject levelCompleteTrigger;
 
     private void Awake () {
         envObjectsParent = GameObject.Find ("EnvObjects");
-        eGen = GetComponent<EnemyGeneration> ();
     }
 
-    public void CreateNewLevel () {
-        GenerateNewTiles ();
-        GenerateLevel ();
-        eGen.GenerateNewEnemies ();
+    public void CreateNewLevel () 
+    {
+        GenerateNewTiles();
+        GenerateLevel();
     }
 
     public void GenerateLevel () //called from game manager to create level at game start
@@ -88,6 +86,7 @@ public class LevelGeneration : MonoBehaviour {
 
                 currentTile.transform.position = new Vector3 (xPos, yPos);
                 currentTile.GetComponent<ItemGeneration> ().GenerateNewItems (items);
+                currentTile.GetComponent<EnemyGeneration>().GenerateEnemies(basicEnemy);
                 previousTile = currentTile;
                 previousXPos = currentTile.transform.position.x;
                 previousYPos = currentTile.transform.position.y;
