@@ -13,5 +13,6 @@ public class StartGame : MonoBehaviour
     public void exitGame()
     {
         Application.Quit();
+        Debug.Log("Quit Game");
     }
 }
