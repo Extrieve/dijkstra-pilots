@@ -70,9 +70,11 @@ MonoBehaviour:
   - {fileID: 4485648753029613026, guid: 34e46f321c8145d459b637b1a8478af5, type: 3}
   items:
   - {fileID: 2015069999666006721, guid: ec60d6e473eb0c543afdbd16b0762d18, type: 3}
+  basicEnemy: {fileID: 0}
   hallConnector: {fileID: 8725216822902220698, guid: c104ca5f1dd91d9428aa7b5712b5e41d,
     type: 3}
   tileIncreasePerLevel: 2
+  levelCompleteTrigger: {fileID: 0}
 --- !u!114 &2006089294307423720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,8 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c943937b46c23d4da1901cbab8ffcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8900071887926347586, guid: 1b593e73f7765834b8da7a74d0782721,
-    type: 3}
 --- !u!114 &969098797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +176,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b6f91a3642e784888158df8a3ca18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimerT: {fileID: 318096233379252516, guid: d0de1c837ef041f48ac64e55f3ce40ac, type: 3}
