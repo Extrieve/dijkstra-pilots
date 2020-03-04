@@ -14,7 +14,19 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
-            ScoreScript.scoreValue += 10;
+            if (Timer.t < 5)
+            {
+                ScoreScript.scoreValue += 30;
+            }
+            else if (Timer.t < 15)
+            {
+                ScoreScript.scoreValue += 20;
+            }
+            else
+            {
+                ScoreScript.scoreValue += 10;
+            }
+            
         }
     }
 
