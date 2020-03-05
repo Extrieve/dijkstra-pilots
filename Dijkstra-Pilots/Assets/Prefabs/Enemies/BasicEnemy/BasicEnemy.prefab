@@ -115,9 +115,8 @@ MonoBehaviour:
   stoppingDistance: 6
   retreatDistance: 3
   attackDistance: 8
-  startTimeBtwShots: 0
+  startTimeBtwShots: 2
   startWaitTime: 2
   projectile: {fileID: 2137598243101387634, guid: 9d5139163e826f74ebad7c56f1286661,
     type: 3}
   player: {fileID: 0}
-  moveSpots: []
