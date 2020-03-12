@@ -7,9 +7,9 @@ using UnityEngine;
  */
 
 public class LevelGeneration : MonoBehaviour {
-    public List<GameObject> tileSets = new List<GameObject> ();
     public List<GameObject> items = new List<GameObject> ();
     public GameObject basicEnemy;
+    public List<GameObject> tileSets = new List<GameObject>();
 
     public GameObject hallConnector;
 
@@ -18,7 +18,7 @@ public class LevelGeneration : MonoBehaviour {
 
     private bool bossLevel = false;
     private int currentLevel = 0;
-    private int levelTileCount = 2;
+    private int levelTileCount = 20;
     private int tbTileDistance = 15;
     private int lrTileDistance = 23;
     public int tileIncreasePerLevel;
@@ -39,7 +39,6 @@ public class LevelGeneration : MonoBehaviour {
 
     public void GenerateLevel () //called from game manager to create level at game start
     {
-
         //if the current level count is a divisor of 10, this is a boss level
         if (currentLevel % 10 == 0 && currentLevel != 0)
             bossLevel = true;
@@ -141,7 +140,7 @@ public class LevelGeneration : MonoBehaviour {
 
         Debug.Log ("Level gen complete");
 
-        Instantiate (levelCompleteTrigger, new Vector3 (6f, -0.5f, 0), Quaternion.identity);
+        Instantiate (levelCompleteTrigger, activeTileSets[activeTileSets.Count - 1].GetComponent<ItemGeneration>().GetLevelEndPos().transform.position, Quaternion.identity);
         Debug.Log("Level completion trigger complete");
 
     }
@@ -158,7 +157,6 @@ public class LevelGeneration : MonoBehaviour {
 
         directions.Clear ();
         int previousDirection = -1;
-        GameObject currentTile;
 
         //set the path that the tiles will generate with
         for (int i = 0; i < levelTileCount; i++) {
@@ -173,54 +171,11 @@ public class LevelGeneration : MonoBehaviour {
             previousDirection = randomDirection;
         }
 
-        //for each direction choose a tile that will work with the previous tile
-        for (int i = 0; i < directions.Count; i++) {
-            switch (directions[i]) {
-                case 0:
-                    for (int y = 0; y < tileSets.Count; y++) {
-                        int randomTile = Random.Range (0, tileSets.Count);
+        for (int i = 0; i < directions.Count; i++) 
+        {
+            int randomTile = Random.Range(0, tileSets.Count);
 
-                        if (tileSets[randomTile].name.Contains ("Tile_TB_") || tileSets[randomTile].name.Contains ("Tile_TLB_") || tileSets[randomTile].name.Contains ("Tile_TRB_") || tileSets[randomTile].name.Contains ("Tile_A_")) {
-                            activeTileSets.Add (currentTile = Instantiate (tileSets[randomTile] as GameObject, envObjectsParent.transform));
-                            currentTile.SetActive (false);
-                            break;
-                        }
-                    }
-                    break;
-                case 1:
-                    for (int y = 0; y < tileSets.Count; y++) {
-                        int randomTile = Random.Range (0, tileSets.Count);
-
-                        if (tileSets[randomTile].name.Contains ("Tile_TB_") || tileSets[randomTile].name.Contains ("Tile_TLB_") || tileSets[randomTile].name.Contains ("Tile_TRB_") || tileSets[randomTile].name.Contains ("Tile_A_")) {
-                            activeTileSets.Add (currentTile = Instantiate (tileSets[randomTile] as GameObject, envObjectsParent.transform));
-                            currentTile.SetActive (false);
-                            break;
-                        }
-                    }
-                    break;
-                case 2:
-                    for (int y = 0; y < tileSets.Count; y++) {
-                        int randomTile = Random.Range (0, tileSets.Count);
-
-                        if (tileSets[randomTile].name.Contains ("Tile_A_")) {
-                            activeTileSets.Add (currentTile = Instantiate (tileSets[randomTile] as GameObject, envObjectsParent.transform));
-                            currentTile.SetActive (false);
-                            break;
-                        }
-                    }
-                    break;
-                case 3:
-                    for (int y = 0; y < tileSets.Count; y++) {
-                        int randomTile = Random.Range (0, tileSets.Count);
-
-                        if (tileSets[randomTile].name.Contains ("Tile_A_")) {
-                            activeTileSets.Add (currentTile = Instantiate (tileSets[randomTile] as GameObject, envObjectsParent.transform));
-                            currentTile.SetActive (false);
-                            break;
-                        }
-                    }
-                    break;
-            }
+            activeTileSets.Add(Instantiate(tileSets[randomTile] as GameObject, envObjectsParent.transform));
         }
     }
 }

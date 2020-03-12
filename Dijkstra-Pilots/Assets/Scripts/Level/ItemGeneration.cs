@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemGeneration : MonoBehaviour
 {
     private List<GameObject> spawnPositions = new List<GameObject>();
+    public GameObject levelEndPosition;
 
     private void Awake()
     {
@@ -38,4 +39,10 @@ public class ItemGeneration : MonoBehaviour
 
         Debug.Log("Item gen complete");
     }
+
+    public GameObject GetLevelEndPos()
+    {
+        return levelEndPosition;
+    }
+
 }

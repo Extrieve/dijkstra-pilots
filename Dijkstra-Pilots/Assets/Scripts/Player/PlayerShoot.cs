@@ -6,8 +6,10 @@ public class PlayerShoot : MonoBehaviour
 {
     public Transform firePosition;
     public GameObject bulletPrefab;
+    public float bulletForce = 20f;
+    private int secondaryAmmoCount;
 
-    public float bulletForce = 20f; 
+    private PlayerWeapon secondaryWeapon;
 
     void Update()
     {
@@ -26,8 +28,16 @@ public class PlayerShoot : MonoBehaviour
             {
                 ScoreScript.scoreValue += 10;
             }
-            
         }
+
+        if(Input.GetButtonDown("Fire2") && secondaryAmmoCount > 0)
+        {
+            secondaryAmmoCount--;
+            ShootSecondary();
+        }
+
+        if (secondaryAmmoCount <= 0)
+            RemoveSecondaryWeapon();
     }
 
     private void Shoot()
@@ -35,5 +45,33 @@ public class PlayerShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePosition.up * bulletForce, ForceMode2D.Impulse);
+    }
+
+    private void ShootSecondary() //fire the weapon but use information from the secondary weapon to fire
+    {
+        GameObject bullet = Instantiate(secondaryWeapon.projectilePrefab, firePosition.position, firePosition.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePosition.up * secondaryWeapon.force, ForceMode2D.Impulse);
+    }
+
+    public void SetSecondaryWeapon(PlayerWeapon newWeapon)
+    {
+        secondaryWeapon = newWeapon;
+        secondaryAmmoCount = secondaryWeapon.startingAmmo;
+    }
+
+    public void RemoveSecondaryWeapon()
+    {
+        secondaryWeapon = null;
+    }
+
+    public PlayerWeapon GetSecondaryWeapon()
+    {
+        return secondaryWeapon;
+    }
+
+    public int GetSecondaryAmmoCount()
+    {
+        return secondaryAmmoCount;
     }
 }

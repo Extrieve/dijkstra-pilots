@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class GUIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //call to the player object, get the player shoot script, get the secondary weapon info from it. Use the secondary weapon's image info to change the UI
+    //same for the ammo count
 }

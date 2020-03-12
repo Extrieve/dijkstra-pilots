@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class PlayerItemPickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerKeys pKeys;
+    private PlayerShoot pShoot;
+
+    private void Awake()
     {
-        
+        pKeys = GetComponent<PlayerKeys>();
+        pShoot = GetComponent<PlayerShoot>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if(collision.gameObject.CompareTag("Key"))
+        {
+            pKeys.AddKey(collision.gameObject.GetComponent<ItemInfo>());
+
+            collision.gameObject.SetActive(false);
+        }
+
+        if (collision.gameObject.CompareTag("Weapon"))
+        {
+            pShoot.SetSecondaryWeapon(collision.gameObject.GetComponent<PlayerWeapon>());
+
+            collision.gameObject.SetActive(false);
+        }
     }
 }

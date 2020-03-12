@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - MovePoint
+  - Key
+  - Weapon
+  - Item
+  - Level End
   layers:
   - Default
   - TransparentFX

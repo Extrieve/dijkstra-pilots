@@ -70,11 +70,16 @@ MonoBehaviour:
   - {fileID: 4485648753029613026, guid: 34e46f321c8145d459b637b1a8478af5, type: 3}
   items:
   - {fileID: 2015069999666006721, guid: ec60d6e473eb0c543afdbd16b0762d18, type: 3}
-  basicEnemy: {fileID: 0}
+  - {fileID: 2015069999666006721, guid: 134aa640f46fd6848b0a76bdeebf3978, type: 3}
+  - {fileID: 2015069999666006721, guid: 88b1b57f754f5924cb0cd131ba68bd28, type: 3}
+  - {fileID: 2015069999666006721, guid: c074e803cf9767949a205983873d5d85, type: 3}
+  basicEnemy: {fileID: 2967422431433010141, guid: 3a7e0090c2dafc347a2cce3e3c92470d,
+    type: 3}
   hallConnector: {fileID: 8725216822902220698, guid: c104ca5f1dd91d9428aa7b5712b5e41d,
     type: 3}
   tileIncreasePerLevel: 2
-  levelCompleteTrigger: {fileID: 0}
+  levelCompleteTrigger: {fileID: 2440613395440030249, guid: 055734eaa45373e468db0c68269a1384,
+    type: 3}
 --- !u!114 &2006089294307423720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referenceObjects:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -176,4 +182,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b6f91a3642e784888158df8a3ca18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerT: {fileID: 318096233379252516, guid: d0de1c837ef041f48ac64e55f3ce40ac, type: 3}
+  TimerT: {fileID: 0}
