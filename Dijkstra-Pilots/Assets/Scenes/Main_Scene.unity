@@ -1169,6 +1169,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ca5a14f3c71c34b8f13c9270e9907d, type: 3}
+--- !u!114 &1743695129524297870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1743695128480992012, guid: d9ca5a14f3c71c34b8f13c9270e9907d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1743695129524297869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2006089294468837692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,6 +1208,23 @@ PrefabInstance:
       propertyPath: referenceObjects.Array.data[4]
       value: 
       objectReference: {fileID: 1768204075}
+    - target: {fileID: 969098801, guid: 507f0e1e7cee0dc418eb65164fb7c745, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1358637898}
+    - target: {fileID: 969098801, guid: 507f0e1e7cee0dc418eb65164fb7c745, type: 3}
+      propertyPath: secondaryWeaponImage
+      value: 
+      objectReference: {fileID: 762112966}
+    - target: {fileID: 969098801, guid: 507f0e1e7cee0dc418eb65164fb7c745, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1743695129524297870}
+    - target: {fileID: 969098801, guid: 507f0e1e7cee0dc418eb65164fb7c745, type: 3}
+      propertyPath: emptyWeapon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5436edf79da79c843b0d35a3f3ecfebb,
+        type: 3}
     - target: {fileID: 2006089294307423721, guid: 507f0e1e7cee0dc418eb65164fb7c745,
         type: 3}
       propertyPath: tileSets.Array.size

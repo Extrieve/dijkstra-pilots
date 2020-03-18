@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Fire2") && secondaryAmmoCount > 0)
+        if((Input.GetButtonDown("Fire2") && secondaryAmmoCount > 0) || (Input.GetButtonDown("Fire2") && secondaryAmmoCount > 0))
         {
             secondaryAmmoCount--;
             ShootSecondary();
