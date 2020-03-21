@@ -6,6 +6,7 @@ public class PlayerItemPickup : MonoBehaviour
 {
     private PlayerKeys pKeys;
     private PlayerShoot pShoot;
+    public AudioSource pickupSound;
 
     private void Awake()
     {
@@ -19,12 +20,17 @@ public class PlayerItemPickup : MonoBehaviour
         {
             pKeys.AddKey(collision.gameObject.GetComponent<ItemInfo>());
 
+            pickupSound.Play();
+
             collision.gameObject.SetActive(false);
+            
         }
 
         if (collision.gameObject.CompareTag("Weapon"))
         {
             pShoot.SetSecondaryWeapon(collision.gameObject.GetComponent<PlayerWeapon>());
+
+            pickupSound.Play();
 
             collision.gameObject.SetActive(false);
         }

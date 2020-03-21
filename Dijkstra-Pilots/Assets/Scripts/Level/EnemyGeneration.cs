@@ -7,6 +7,7 @@ public class EnemyGeneration : MonoBehaviour
     //private List<GameObject> activeEnemies = new List<GameObject>();
     private List<GameObject> spawnPositions = new List<GameObject>();
 
+
     private void Awake()
     {
         foreach (Transform enemySpawn in gameObject.GetComponentsInChildren<Transform>())

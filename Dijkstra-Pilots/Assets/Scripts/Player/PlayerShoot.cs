@@ -7,7 +7,9 @@ public class PlayerShoot : MonoBehaviour
     public Transform firePosition;
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
+    public AudioSource shootSound;
     private int secondaryAmmoCount;
+
 
     private PlayerWeapon secondaryWeapon;
 
@@ -28,6 +30,8 @@ public class PlayerShoot : MonoBehaviour
             {
                 ScoreScript.scoreValue += 10;
             }
+
+            shootSound.Play();
         }
 
         if((Input.GetButtonDown("Fire2") && secondaryAmmoCount > 0) || (Input.GetButtonDown("Fire2") && secondaryAmmoCount > 0))

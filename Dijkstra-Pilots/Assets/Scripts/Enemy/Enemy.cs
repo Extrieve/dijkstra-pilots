@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     private float timeBtwShots;
     public float startTimeBtwShots;
 
+
     private float waitTime;
     //How long they should wait before moving to a new waypoint
     public float startWaitTime;
@@ -59,6 +60,7 @@ public class EnemyAI : MonoBehaviour
             {
                 Instantiate(projectile, transform.position, Quaternion.identity);
                 timeBtwShots = startTimeBtwShots;
+                
             }
 
             else
