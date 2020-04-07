@@ -7,19 +7,18 @@ public class ItemGeneration : MonoBehaviour
     private List<GameObject> spawnPositions = new List<GameObject>();
     public GameObject levelEndPosition;
 
-    private void Awake()
+    public void GenerateNewItems(List<GameObject> items)
     {
+        spawnPositions.Clear();
+
         foreach (Transform itemSpawn in gameObject.GetComponentsInChildren<Transform>())
         {
-            if(itemSpawn.name.Contains("Item Spawn"))
+            if (itemSpawn.name.Contains("Item Spawn"))
             {
                 spawnPositions.Add(itemSpawn.gameObject);
             }
         }
-    }
 
-    public void GenerateNewItems(List<GameObject> items)
-    {
         int randomNumberOfItems = Random.Range(0, 3);
 
         for (int i = 0; i < randomNumberOfItems; i++)

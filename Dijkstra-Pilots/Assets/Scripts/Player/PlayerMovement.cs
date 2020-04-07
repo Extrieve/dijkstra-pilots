@@ -30,4 +30,9 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
     }
+
+    public void ResetPosition()
+    {
+        rb.position = new Vector2(0, 0);
+    }
 }

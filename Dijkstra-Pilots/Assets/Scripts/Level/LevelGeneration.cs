@@ -18,7 +18,7 @@ public class LevelGeneration : MonoBehaviour {
 
     private bool bossLevel = false;
     private int currentLevel = 0;
-    private int levelTileCount = 20;
+    private int levelTileCount = 2;
     private int tbTileDistance = 15;
     private int lrTileDistance = 23;
     public int tileIncreasePerLevel;
@@ -26,6 +26,7 @@ public class LevelGeneration : MonoBehaviour {
     private GameObject envObjectsParent;
 
     public GameObject levelCompleteTrigger;
+    private GameObject lvlCompleteTriggerTemp;
 
     private void Awake () {
         envObjectsParent = GameObject.Find ("EnvObjects");
@@ -37,7 +38,7 @@ public class LevelGeneration : MonoBehaviour {
         GenerateLevel();
     }
 
-    public void GenerateLevel () //called from game manager to create level at game start
+    public void GenerateLevel () //called from game manager to create level at game start and each time a new level is created
     {
         //if the current level count is a divisor of 10, this is a boss level
         if (currentLevel % 10 == 0 && currentLevel != 0)
@@ -140,7 +141,7 @@ public class LevelGeneration : MonoBehaviour {
 
         Debug.Log ("Level gen complete");
 
-        Instantiate (levelCompleteTrigger, activeTileSets[activeTileSets.Count - 1].GetComponent<ItemGeneration>().GetLevelEndPos().transform.position, Quaternion.identity);
+        lvlCompleteTriggerTemp = Instantiate(levelCompleteTrigger, activeTileSets[activeTileSets.Count - 1].GetComponent<ItemGeneration>().GetLevelEndPos().transform.position, Quaternion.identity);
         Debug.Log("Level completion trigger complete");
 
     }
@@ -152,6 +153,8 @@ public class LevelGeneration : MonoBehaviour {
         foreach (GameObject tile in tempTiles) {
             Destroy (tile);
         }
+
+        Destroy(lvlCompleteTriggerTemp);
 
         activeTileSets.Clear ();
 

@@ -7,9 +7,10 @@ public class EnemyGeneration : MonoBehaviour
     //private List<GameObject> activeEnemies = new List<GameObject>();
     private List<GameObject> spawnPositions = new List<GameObject>();
 
-
-    private void Awake()
+    public void GenerateEnemies(GameObject enemy)
     {
+        spawnPositions.Clear();
+
         foreach (Transform enemySpawn in gameObject.GetComponentsInChildren<Transform>())
         {
             if (enemySpawn.name.Contains("Enemy Spawn"))
@@ -17,10 +18,7 @@ public class EnemyGeneration : MonoBehaviour
                 spawnPositions.Add(enemySpawn.gameObject);
             }
         }
-    }
 
-    public void GenerateEnemies(GameObject enemy)
-    {
         int randomNumberOfItems = Random.Range(0, 3);
 
         for (int i = 0; i < randomNumberOfItems; i++)
@@ -37,6 +35,6 @@ public class EnemyGeneration : MonoBehaviour
             usedSpawns.Add(randomSpawn);
         }
 
-        Debug.Log("Item gen complete");
+        Debug.Log("Enemy gen complete");
     }
 }

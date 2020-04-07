@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        GenerateNextLevel();
+    }
+
+    public void GenerateNextLevel()
+    {
         levelGen.CreateNewLevel();
+        ReferenceHandler.GetObject(1).GetComponent<PlayerMovement>().ResetPosition();
     }
 }
