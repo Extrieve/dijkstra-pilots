@@ -6,6 +6,8 @@ public class EnemyProjectile : MonoBehaviour
 {
     public float speed;
 
+    public AudioSource shootSound;
+
     private Transform player;
     private Vector2 target;
 
@@ -23,6 +25,7 @@ public class EnemyProjectile : MonoBehaviour
         if(transform.position.x == target.x && transform.position.y == target.y)
         {
             DestroyProjectile();
+            shootSound.Play();
         }
     }
 
