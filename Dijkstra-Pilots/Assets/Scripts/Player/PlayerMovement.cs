@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector2 movement, mousePos; 
-
+    private Vector2 movement, mousePos;
+    public AudioSource moveSound;
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Camera camera;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
+        
         //Finding the intermediate vector, so that the character model aims 
         // where the cursor is located
         Vector2 lookDirection = mousePos - rb.position; 
@@ -34,5 +34,6 @@ public class PlayerMovement : MonoBehaviour
     public void ResetPosition()
     {
         rb.position = new Vector2(0, 0);
+        moveSound.Play();
     }
 }

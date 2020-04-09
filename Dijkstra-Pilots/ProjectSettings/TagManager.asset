@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Item
   - Level End
+  - Spike
   layers:
   - Default
   - TransparentFX

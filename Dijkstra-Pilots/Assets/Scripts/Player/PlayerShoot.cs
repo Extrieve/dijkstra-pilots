@@ -7,8 +7,10 @@ public class PlayerShoot : MonoBehaviour
     public Transform firePosition;
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
-    public AudioSource shootSound;
     private int secondaryAmmoCount;
+    private SoundManager soundManager;
+    public AudioSource shootSound;
+    public AudioSource secondaryShoot;
 
 
     private PlayerWeapon secondaryWeapon;
@@ -38,6 +40,19 @@ public class PlayerShoot : MonoBehaviour
         {
             secondaryAmmoCount--;
             ShootSecondary();
+            if (Timer.t < 5)
+            {
+                ScoreScript.scoreValue += 30;
+            }
+            else if (Timer.t < 15)
+            {
+                ScoreScript.scoreValue += 20;
+            }
+            else
+            {
+                ScoreScript.scoreValue += 10;
+            }
+            secondaryShoot.Play();
         }
 
         if (secondaryAmmoCount <= 0)
@@ -49,6 +64,7 @@ public class PlayerShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePosition.up * bulletForce, ForceMode2D.Impulse);
+        //soundManager.PlaySound("Shoot");
     }
 
     private void ShootSecondary() //fire the weapon but use information from the secondary weapon to fire
