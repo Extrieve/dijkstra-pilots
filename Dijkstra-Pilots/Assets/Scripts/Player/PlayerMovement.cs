@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 movement, mousePos;
-    public AudioSource moveSound;
+    //public AudioSource moveSound;
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Camera camera;
@@ -34,6 +34,6 @@ public class PlayerMovement : MonoBehaviour
     public void ResetPosition()
     {
         rb.position = new Vector2(0, 0);
-        moveSound.Play();
+        //moveSound.Play();
     }
 }

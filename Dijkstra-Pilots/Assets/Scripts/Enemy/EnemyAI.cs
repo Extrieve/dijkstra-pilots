@@ -10,11 +10,12 @@ public class EnemyAI : MonoBehaviour
     //When the enemy should back away from the player
     public float retreatDistance;
     //When the enemy should start attacking the enemy
+    public float bulletForce = 20f;
     public float attackDistance;
     private float timeBtwShots;
     public float startTimeBtwShots;
 
-
+    private Rigidbody2D rb;
     private float waitTime;
     //How long they should wait before moving to a new waypoint
     public float startWaitTime;
@@ -43,9 +44,11 @@ public class EnemyAI : MonoBehaviour
         //If the player is in range of attackDistance then begin attacking, otherwise patrol
         if (Vector2.Distance(transform.position, player.position) <= attackDistance)
         {
+            transform.up = player.position - transform.position;
+
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+                Vector3 target = player.transform.position;
             }
 
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
@@ -60,9 +63,10 @@ public class EnemyAI : MonoBehaviour
 
             if (timeBtwShots <= 0)
             {
-                Instantiate(projectile, transform.position, Quaternion.identity);
                 timeBtwShots = startTimeBtwShots;
-                
+                GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(transform.up * bulletForce, ForceMode2D.Impulse);
             }
 
             else
@@ -71,6 +75,7 @@ public class EnemyAI : MonoBehaviour
             }
 
         }
+
         else
         {
             for (int i = moveSpots.Count - 1; i > -1; i--)

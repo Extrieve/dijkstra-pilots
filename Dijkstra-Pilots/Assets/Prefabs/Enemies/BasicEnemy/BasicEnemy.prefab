@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3809345057099390920}
   - component: {fileID: -5245926234336162795}
   - component: {fileID: 4263638202476216836}
-  - component: {fileID: 493650911017528806}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -116,6 +115,7 @@ MonoBehaviour:
   moveSpeed: 3
   stoppingDistance: 6
   retreatDistance: 3
+  bulletForce: 20
   attackDistance: 8
   startTimeBtwShots: 2
   startWaitTime: 2
@@ -136,24 +136,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
---- !u!50 &493650911017528806
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2967422431433010141}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
