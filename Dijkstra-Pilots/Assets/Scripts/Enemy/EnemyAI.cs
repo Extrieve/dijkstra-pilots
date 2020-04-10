@@ -20,7 +20,8 @@ public class EnemyAI : MonoBehaviour
     public float startWaitTime;
 
     //The projectile is what the enemy will be shooting
-    public GameObject projectile; 
+    public GameObject projectile;
+    public Health health;
     public Transform player;
 
     //The array to contain the waypoints that the enemy needs to move to
@@ -89,6 +90,19 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 waitTime -= Time.deltaTime;
+            }
+        }
+    }
+
+    void OnCollision2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("PlayerProjectile"))
+        {
+            health.ChangeHealth(-50);
+            if(health.GetHealth() == 0)
+            {
+                Destroy(col.gameObject);
+                Destroy(gameObject);
             }
         }
     }

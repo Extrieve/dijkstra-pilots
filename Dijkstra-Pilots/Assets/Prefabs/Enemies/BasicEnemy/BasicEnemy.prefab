@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8308209637422281938}
   - component: {fileID: 3809345057099390920}
   - component: {fileID: -5245926234336162795}
+  - component: {fileID: 4263638202476216836}
+  - component: {fileID: 493650911017528806}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -119,4 +121,39 @@ MonoBehaviour:
   startWaitTime: 2
   projectile: {fileID: 2137598243101387634, guid: 9d5139163e826f74ebad7c56f1286661,
     type: 3}
+  health: {fileID: 4263638202476216836}
   player: {fileID: 0}
+--- !u!114 &4263638202476216836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967422431433010141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4267278b0ac82d4ead4518784a59eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!50 &493650911017528806
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967422431433010141}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

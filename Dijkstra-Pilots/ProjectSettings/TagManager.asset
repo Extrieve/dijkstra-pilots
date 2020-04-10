@@ -10,6 +10,8 @@ TagManager:
   - Item
   - Level End
   - Spike
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

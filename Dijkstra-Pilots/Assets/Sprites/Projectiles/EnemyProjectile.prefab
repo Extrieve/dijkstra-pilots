@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8469759988605432460}
   m_Layer: 0
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  shootSound: {fileID: 0}
 --- !u!58 &-8469759988605432460
 CircleCollider2D:
   m_ObjectHideFlags: 0

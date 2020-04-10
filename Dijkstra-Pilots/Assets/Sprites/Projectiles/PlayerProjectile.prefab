@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5177477116336076518}
   - component: {fileID: 1589004123066557309}
   m_Layer: 0
-  m_Name: fireball-blue-big
-  m_TagString: Untagged
+  m_Name: PlayerProjectile
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fca95bbd6930a4d942ded58f392900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
