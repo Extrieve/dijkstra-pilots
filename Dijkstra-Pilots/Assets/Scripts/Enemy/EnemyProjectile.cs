@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     public float speed;
-
+    public int damage = 50;
     public AudioSource shootSound;
 
 
@@ -22,8 +22,15 @@ public class EnemyProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")  || other.CompareTag("Wall"))
+        if (other.CompareTag("Wall"))
         {
+            Destroy(gameObject);
+        }
+        
+        else if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player Was Shot");
+            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 3929534018467658767}
   - component: {fileID: 9060881366779812666}
   - component: {fileID: 6085570001576166538}
+  - component: {fileID: 3506139352329446442}
+  - component: {fileID: 1025645216850303270}
   m_Layer: 0
   m_Name: PlayerCharacter1
   m_TagString: Player
@@ -175,6 +177,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2137598243101387634, guid: c060293c271d39d438f7c2a3ff91dd3f,
     type: 3}
   bulletForce: 20
+  shootSound: {fileID: 0}
+  secondaryShoot: {fileID: 0}
 --- !u!58 &3929534018467658767
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -203,6 +207,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e271f48dc96594fa4f3b2e8dfeba47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: 
+  itemID: 0
+  force: 0
+  projectileCount: 0
+  startingAmmo: 0
+  bulletDamage: 0
+  projectilePrefab: {fileID: 0}
+  uiImage: {fileID: 0}
 --- !u!114 &6085570001576166538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +227,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee18b26212391c54b9e1b490965fa322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupSound: {fileID: 0}
+--- !u!114 &3506139352329446442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9122452041094775608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4267278b0ac82d4ead4518784a59eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &1025645216850303270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9122452041094775608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f559e874a65f946b64f216c73f2f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3506139352329446442}

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3809345057099390920}
   - component: {fileID: -5245926234336162795}
   - component: {fileID: 6483815374471418923}
+  - component: {fileID: -7131618150998777373}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,12 +116,12 @@ MonoBehaviour:
   moveSpeed: 3
   stoppingDistance: 6
   retreatDistance: 3
+  bulletForce: 20
   attackDistance: 8
   startTimeBtwShots: 0
   startWaitTime: 2
   projectile: {fileID: 2137598243101387634, guid: 9d5139163e826f74ebad7c56f1286661,
     type: 3}
-  health: {fileID: 6483815374471418923}
   player: {fileID: 0}
 --- !u!114 &6483815374471418923
 MonoBehaviour:
@@ -134,4 +135,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4267278b0ac82d4ead4518784a59eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
+--- !u!114 &-7131618150998777373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967422431433010141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b102c4cdec49b14d98b7d22a055e7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 6483815374471418923}

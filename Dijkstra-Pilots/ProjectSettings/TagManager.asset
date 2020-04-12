@@ -12,6 +12,8 @@ TagManager:
   - Spike
   - PlayerProjectile
   - EnemyProjectile
+  - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
