@@ -7,11 +7,11 @@ public class EnemyProjectile : MonoBehaviour
     public float speed;
     public int damage = 50;
     public AudioSource shootSound;
-
+    
 
     void Start()
     {
-        shootSound = GameObject.Find("Shoot1").GetComponent<AudioSource>();
+        shootSound = GameObject.Find("Shoot2").GetComponent<AudioSource>();
         shootSound.Play();
     }
 
