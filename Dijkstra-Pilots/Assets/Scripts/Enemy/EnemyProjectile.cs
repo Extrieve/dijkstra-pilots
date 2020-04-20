@@ -7,7 +7,7 @@ public class EnemyProjectile : MonoBehaviour
     public float speed;
     public int damage = 50;
     public AudioSource shootSound;
-    
+
 
     void Start()
     {

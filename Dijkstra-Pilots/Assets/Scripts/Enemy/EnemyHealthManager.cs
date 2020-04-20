@@ -6,10 +6,12 @@ public class EnemyHealthManager : MonoBehaviour
 {
     public Health health;
     private int currentHealth;
+    public AudioSource destroySound;
 
     void Start()
     {
         currentHealth = health.GetHealth();
+        destroySound = GameObject.Find("Crash2").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -17,6 +19,17 @@ public class EnemyHealthManager : MonoBehaviour
         if(currentHealth <= 0)
         {
             Destroy(gameObject);
+            destroySound.Play();
+            if (Timer.t < 5)
+            {
+                ScoreScript.scoreValue += 30;
+            }else if (Timer.t < 15)
+            {
+                ScoreScript.scoreValue += 20;
+            }else
+            {
+                ScoreScript.scoreValue += 10;
+            }
         }
     }
 
