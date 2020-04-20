@@ -1152,6 +1152,18 @@ MonoBehaviour:
     shootSound: {fileID: 8300000, guid: 581cfcf717b8c2e48b247653b09e9f0b, type: 3}
     volume: 0.57
     pitch: 0.34
+--- !u!114 &783101842 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5236919641589352102, guid: 507f0e1e7cee0dc418eb65164fb7c745,
+    type: 3}
+  m_PrefabInstance: {fileID: 2006089294468837692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783101840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b6f91a3642e784888158df8a3ca18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &783101850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2006089294307423722, guid: 507f0e1e7cee0dc418eb65164fb7c745,
@@ -3685,6 +3697,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4622115959984872828, guid: d9ca5a14f3c71c34b8f13c9270e9907d,
+        type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 783101842}
     - target: {fileID: 5353919520323207543, guid: d9ca5a14f3c71c34b8f13c9270e9907d,
         type: 3}
       propertyPath: m_Color.a

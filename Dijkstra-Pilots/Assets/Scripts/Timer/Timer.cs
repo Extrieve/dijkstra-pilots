@@ -23,4 +23,9 @@ public class Timer : MonoBehaviour
         string seconds = (t % 60).ToString("00");
         TimerT.text = minutes + ":" + seconds;
     }
+
+    public void ResetTimer()
+    {
+        startTime = Time.time;
+    }
 }

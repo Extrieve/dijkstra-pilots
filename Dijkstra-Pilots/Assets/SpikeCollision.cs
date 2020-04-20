@@ -26,7 +26,7 @@ public class SpikeCollision : MonoBehaviour
         {
             spikeHit.Play();
             // PlayerHealthManager.health.ChangeHealth(5);
-            Destroy(other);
+            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(100);
         }
        
     }
