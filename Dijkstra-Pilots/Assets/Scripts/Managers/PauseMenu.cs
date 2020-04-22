@@ -39,4 +39,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenuInterface.SetActive(false);
         isPaused = false;
     }
+
+    public void QuitApplicaition()
+    {
+        Application.Quit();
+        Debug.Log("QUIT");
+    }
 }
